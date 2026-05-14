@@ -1,0 +1,38 @@
+{
+  "start_ts": 1678901234,
+  "agent_id": "agent-1",
+  "status": "RUNNING",
+  "contents": [
+    {
+      "role": "assistant",
+      "content": "How can I help you today?",
+      "turn_id": 1,
+      "timestamp": 1678901234,
+      "metadata": {
+        "source": "greeting"
+      }
+    },
+    {
+      "role": "assistant",
+      "content": "Why did the scarecrow ",
+      "turn_id": 2,
+      "timestamp": 1678901236,
+      "metadata": {
+        "source": "llm",
+        "interrupted": true,
+        "interrupt_timestamp": 1678905225,
+        "original": "Why did the scarecrow win an award? Because he was outstanding in his field!"
+      }
+    },
+    {
+      "role": "user",
+      "content": "Tell me a story instead.",
+      "turn_id": 3,
+      "timestamp": 1678905235,
+      "metadata": {
+        "source": "asr",
+        "user": "user123"
+      }
+    }
+  ]
+}

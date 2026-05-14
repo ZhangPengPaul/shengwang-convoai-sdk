@@ -1,0 +1,13 @@
+{
+  "agent_id": "agent-1",
+  "turns": [
+    {
+      "turn_id": "2",
+      "status": "finished",
+      "messages": [
+        { "role": "user", "content": "hello" },
+        { "role": "assistant", "content": "hi, how can I help you?" }
+      ]
+    }
+  ]
+}
