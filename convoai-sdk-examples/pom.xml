@@ -13,7 +13,16 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>basic-auth-sync</module>
-    <module>bearer-token-async</module>
+    <module>examples-common</module>
+    <module>example-start-agent</module>
+    <module>example-stop-agent</module>
+    <module>example-update-agent</module>
+    <module>example-get-agent</module>
+    <module>example-list-agents</module>
+    <module>example-speak-agent</module>
+    <module>example-interrupt-agent</module>
+    <module>example-think-agent</module>
+    <module>example-get-history</module>
+    <module>example-get-turns</module>
   </modules>
 </project>
