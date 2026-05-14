@@ -4,6 +4,8 @@ import io.github.zhangpengpaul.convoai.auth.BearerTokenAuthProvider;
 import io.github.zhangpengpaul.convoai.model.agent.AgentProperties;
 import io.github.zhangpengpaul.convoai.model.agent.AsrConfig;
 import io.github.zhangpengpaul.convoai.model.agent.GetAgentResponse;
+import io.github.zhangpengpaul.convoai.model.agent.ListAgentsRequest;
+import io.github.zhangpengpaul.convoai.model.agent.ListAgentsResponse;
 import io.github.zhangpengpaul.convoai.model.agent.LlmConfig;
 import io.github.zhangpengpaul.convoai.model.agent.StartAgentRequest;
 import io.github.zhangpengpaul.convoai.model.agent.StartAgentResponse;
@@ -61,6 +63,45 @@ class AgentLifecycleContractTest {
             assertThat(query.status()).isEqualTo("RUNNING");
             assertThat(server.takeRequest().getPath()).isEqualTo("/cn/api/conversational-ai-agent/v2/projects/app-id/join");
             assertThat(server.takeRequest().getPath()).isEqualTo("/cn/api/conversational-ai-agent/v2/projects/app-id/agents/agent-1");
+        }
+    }
+
+    @Test
+    void listUsesExpectedQueryParameters() throws Exception {
+        try (MockWebServer server = new MockWebServer()) {
+            server.enqueue(new MockResponse().setBody("""
+                {
+                  "status": "OK",
+                  "data": {
+                    "count": 1,
+                    "list": [
+                      {
+                        "start_ts": 1737111452,
+                        "status": "RUNNING",
+                        "agent_id": "agent-1"
+                      }
+                    ]
+                  },
+                  "meta": {
+                    "cursor": "next-cursor",
+                    "total": 1
+                  }
+                }
+                """));
+            server.start();
+
+            ConvoAiClient client = ConvoAiClient.builder()
+                .appId("app-id")
+                .baseUrl(server.url("/cn/api/conversational-ai-agent/v2").toString())
+                .authProvider(new BearerTokenAuthProvider("token"))
+                .build();
+
+            ListAgentsResponse response = client.listAgents(new ListAgentsRequest("demo-channel", 20, "cursor-1", 1000L, 2000L, 1));
+
+            assertThat(response.data().count()).isEqualTo(1);
+            assertThat(response.data().list()).hasSize(1);
+            assertThat(response.data().list().get(0).agentId()).isEqualTo("agent-1");
+            assertThat(server.takeRequest().getPath()).isEqualTo("/cn/api/conversational-ai-agent/v2/projects/app-id/agents?channel=demo-channel&limit=20&cursor=cursor-1&from_time=1000&to_time=2000&state=1");
         }
     }
 }

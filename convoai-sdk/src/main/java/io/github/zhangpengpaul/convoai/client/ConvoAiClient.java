@@ -24,7 +24,7 @@ import io.github.zhangpengpaul.convoai.model.agent.UpdateAgentResponse;
 import io.github.zhangpengpaul.convoai.model.common.VoidResponse;
 
 import java.net.http.HttpClient;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public final class ConvoAiClient {
@@ -139,7 +139,7 @@ public final class ConvoAiClient {
             return QueryStrings.empty();
         }
 
-        Map<String, Object> params = new HashMap<>();
+        Map<String, Object> params = new LinkedHashMap<>();
         params.put("channel", request.channel());
         params.put("limit", request.limit());
         params.put("cursor", request.cursor());
