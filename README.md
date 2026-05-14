@@ -41,9 +41,12 @@ you can:
 <dependency>
   <groupId>io.github.zhangpengpaul</groupId>
   <artifactId>convoai-sdk</artifactId>
-  <version>0.1.0-SNAPSHOT</version>
+  <version>0.1.0</version>
 </dependency>
 ```
+
+If you are building from source before the first public Central release, adjust
+the version to match the current local snapshot.
 
 ## Quick Start
 
@@ -174,3 +177,4 @@ workflow.
 - `docs/api-mapping.md`
 - `docs/authentication.md`
 - `docs/error-handling.md`
+- `docs/maven-central-publishing.md`

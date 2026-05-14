@@ -6,11 +6,16 @@
   <parent>
     <groupId>io.github.zhangpengpaul</groupId>
     <artifactId>shengwang-convoai-sdk-parent</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.1.0</version>
   </parent>
 
   <artifactId>convoai-sdk-examples</artifactId>
   <packaging>pom</packaging>
+  <name>Shengwang ConvoAI Java SDK Examples</name>
+  <description>Runnable examples for the Shengwang ConvoAI Java SDK.</description>
+  <properties>
+    <maven.deploy.skip>true</maven.deploy.skip>
+  </properties>
 
   <modules>
     <module>examples-common</module>

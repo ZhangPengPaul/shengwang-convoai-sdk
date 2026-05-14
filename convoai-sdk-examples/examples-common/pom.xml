@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.github.zhangpengpaul</groupId>
     <artifactId>convoai-sdk-examples</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.1.0</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 
@@ -16,7 +16,7 @@
     <dependency>
       <groupId>io.github.zhangpengpaul</groupId>
       <artifactId>convoai-sdk</artifactId>
-      <version>0.1.0-SNAPSHOT</version>
+      <version>0.1.0</version>
     </dependency>
 
     <dependency>
